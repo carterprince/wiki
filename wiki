@@ -5,7 +5,7 @@ while [ $# -gt 0 ]; do
 		-i)
 			query="$(cat)"; shift ;;
 		-rofi)
-			query=$(rofi -dmenu -i -p "Search:" -l 0 -separator-style none); shift ;;
+			query=$(rofi -dmenu -i -p "Search: " -l 0 -separator-style none); shift ;;
 		--site)
 			shift; site="$1"; shift ;;
 		*)
@@ -13,6 +13,14 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
+if [ -z "$query" ]; then
+	echo "Usage: wiki [-i] [-rofi] [--site <site>] <query>"
+	echo "  -i: read query from stdin"
+	echo "  -rofi: use rofi to select a site"
+	echo "  --site <site>: use the specified site (default: en.wikipedia.org)"
+	echo -e "  <query>: the query to search for\n"
+	exit 1
+fi
 
 [ -z "$site" ] && site="en.wikipedia.org"
 
