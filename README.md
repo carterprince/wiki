@@ -18,6 +18,17 @@ wiki --site rationalwiki.org [query]
 
 You can read from `/dev/stdin` using `-i`. If you pass `-rofi`, it will prompt the user for a query using [`rofi`](https://github.com/davatorium/rofi).
 
+## Installation
+
+Clone this repository with `git clone https://github.com/SoopaKhell/wiki`.
+
+Change directories into the cloned repo, and move `wiki` into `/usr/local/bin`:
+
+```bash
+cd wiki
+sudo mv wiki /usr/local/bin
+```
+
 ## Requirements
 
 * [pup](https://github.com/ericchiang/pup) (`yay -S pup-git`)
