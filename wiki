@@ -1,0 +1,27 @@
+#!/bin/sh
+
+while [ $# -gt 0 ]; do
+	case $1 in
+		-i)
+			query="$(cat)"; shift ;;
+		-rofi)
+			query=$(rofi -dmenu -i -p "Search:" -l 0 -separator-style none); shift ;;
+		--site)
+			shift; site="$1"; shift ;;
+		*)
+			query="$*"; shift ;;
+	esac
+done
+
+
+[ -z "$site" ] && site="en.wikipedia.org"
+
+data=$(curl -Ls --data-urlencode "search=$query" "https://$site/w/index.php?title=Special:Search&profile=default&fulltext=1&ns0=1")
+# get the link to the first result with pup
+link="https://$site$(echo $data | pup '#mw-content-text > div.searchresults > ul > li:nth-child(1) > div.mw-search-result-heading > a:nth-child(1) attr{href}')"
+
+if [ -n "$BROWSER" ]; then
+	setsid -f $BROWSER "$link" > /dev/null 2>&1 &
+else
+	setsid -f xdg-open "$link" > /dev/null 2>&1 &
+fi
