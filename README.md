@@ -17,3 +17,12 @@ wiki --site rationalwiki.org [query]
 ```
 
 You can read from `/dev/stdin` using `-i`. If you pass `-rofi`, it will prompt the user for a query using [`rofi`](https://github.com/davatorium/rofi).
+
+## Requirements
+
+* [pup](https://github.com/ericchiang/pup) (`yay -S pup-git`)
+* [curl](https://github.com/curl/curl) (`sudo pacman -S curl`)
+
+# License
+
+This software is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/quick-guide-gplv3.html).
