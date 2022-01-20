@@ -8,9 +8,9 @@
 wiki [query]
 ```
 
-This will open the closest match for `[query]` on Wikipedia in your browser. It will use `$BROWSER` if it is set, and `xdg-open` otherwise.
+This will open the closest match for `[query]` on Wikipedia in your browser. It will use the `$BROWSER` environment variable if it is set, and `xdg-open` otherwise.
 
-You can also pass the `--site` argument to specify a different site. For example, to search on RationalWiki, you can specify the `rationalwiki.org` domain:
+You can also pass the `--site` argument to specify a different site. For example, to search on [RationalWiki](https://rationalwiki.org/wiki/Main_Page), you can specify the `rationalwiki.org` domain:
 
 ```bash
 wiki --site rationalwiki.org [query]
