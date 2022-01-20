@@ -1,6 +1,6 @@
 #!/bin/sh
 
-while [ $# -gt 0 ]; do
+while true; do
 	case $1 in
 		-i)
 			query="$(cat)"; shift ;;
@@ -9,7 +9,9 @@ while [ $# -gt 0 ]; do
 		--site)
 			shift; site="$1"; shift ;;
 		*)
-			query="$*"; shift ;;
+			query="$*"; shift
+			break
+			;;
 	esac
 done
 
