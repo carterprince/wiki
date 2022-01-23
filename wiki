@@ -2,16 +2,10 @@
 
 while true; do
 	case $1 in
-		-i)
-			query="$(cat)"; shift ;;
-		-rofi)
-			query=$(rofi -dmenu -i -p "Search: " -l 0 -separator-style none); shift ;;
-		--site)
-			shift; site="$1"; shift ;;
-		*)
-			query="$*"; shift
-			break
-			;;
+		-i)     query="$(cat)"; shift ;;
+		-rofi)  query=$(rofi -dmenu -i -p "Search: " -l 0 -separator-style none); shift ;;
+		--site) shift; site="$1"; shift ;;
+		*) 		query="$*"; break ;;
 	esac
 done
 
